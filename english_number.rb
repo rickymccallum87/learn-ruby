@@ -15,6 +15,45 @@ def english_number number
     teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 
     remaining = number
+    current = remaining / 1000000000000 # how many trillions?
+    remaining -= current * 1000000000000 # subtract those trillions
+
+    # speak trillions
+    if current > 0
+        trillions = english_number current
+        spoken_number += trillions + ' trillion'
+
+        if remaining > 0
+            spoken_number += ' '
+        end
+    end
+
+    current = remaining / 1000000000 # how many billions?
+    remaining -= current * 1000000000 # subtract those billions
+
+    # speak billions
+    if current > 0
+        billions = english_number current
+        spoken_number += billions + ' billion'
+
+        if remaining > 0
+            spoken_number += ' '
+        end
+    end
+
+    current = remaining / 1000000   # how many millions?
+    remaining -= current * 1000000  # subtract those millions
+
+    # speak millions
+    if current > 0
+        millions = english_number current
+        spoken_number += millions + ' million'
+
+        if remaining > 0
+            spoken_number += ' '
+        end
+    end
+
     current = remaining / 1000      # how many thousands?
     remaining -= current * 1000     # subtract those thousands
 
