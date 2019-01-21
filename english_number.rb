@@ -15,6 +15,19 @@ def english_number number
     teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 
     remaining = number
+    current = remaining / 1000      # how many thousands?
+    remaining -= current * 1000     # subtract those thousands
+
+    # speak thousands
+    if current > 0
+        thousands = english_number current
+        spoken_number += thousands + ' thousand'
+
+        if remaining > 0
+            spoken_number += ' '
+        end
+    end
+
     current = remaining / 100       # how many hundreds?
     remaining -= current * 100      # subtract those hundreds
 
